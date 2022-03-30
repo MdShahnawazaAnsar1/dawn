@@ -274,8 +274,7 @@
     },
     "featured_collection": {
       "view_all": "Zobrazit vše",
-      "view_all_label": "Zobrazit všechny produkty v kolekci {{ collection_name }}",
-      "slider": "Posuvník"
+      "view_all_label": "Zobrazit všechny produkty v kolekci {{ collection_name }}"
     },
     "collection_list": {
       "view_all": "Zobrazit vše"
@@ -296,9 +295,6 @@
       "play_slideshow": "Přehrát prezentaci",
       "carousel": "Karusel",
       "slide": "Snímek"
-    },
-    "page": {
-      "title": "Název stránky"
     }
   },
   "localization": {
@@ -412,8 +408,7 @@
       "tracking_url": "Odkaz pro sledování",
       "tracking_company": "Dopravce",
       "tracking_number": "Číslo pro sledování",
-      "subtotal": "Mezisoučet",
-      "total_duties": "Cla"
+      "subtotal": "Mezisoučet"
     }
   },
   "gift_cards": {

@@ -260,8 +260,7 @@
     },
     "featured_collection": {
       "view_all": "Alle anzeigen",
-      "view_all_label": "Alle Produkte in der Kategorie {{ collection_name }} anzeigen",
-      "slider": "Slider"
+      "view_all_label": "Alle Produkte in der Kategorie {{ collection_name }} anzeigen"
     },
     "collection_list": {
       "view_all": "Alle anzeigen"
@@ -282,9 +281,6 @@
       "play_slideshow": "Slideshow abspielen",
       "carousel": "Karussell",
       "slide": "Folie"
-    },
-    "page": {
-      "title": "Seitentitel"
     }
   },
   "localization": {
@@ -398,8 +394,7 @@
       "tracking_url": "Tracking-Link",
       "tracking_company": "Versanddienstleister",
       "tracking_number": "Trackingnummer",
-      "subtotal": "Zwischensumme",
-      "total_duties": "Zollgebühren"
+      "subtotal": "Zwischensumme"
     }
   },
   "gift_cards": {
