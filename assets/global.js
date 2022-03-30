@@ -73,7 +73,7 @@ function trapFocus(container, elementToFocus = container) {
 // Here run the querySelector to figure out if the browser supports :focus-visible or not and run code based on it.
 try {
   document.querySelector(":focus-visible");
-} catch(e) {
+} catch {
   focusVisiblePolyfill();
 }
 
@@ -343,8 +343,6 @@ class MenuDrawer extends HTMLElement {
   }
 
   closeMenuDrawer(event, elementToFocus = false) {
-    if (event === undefined) return;
-
     this.mainDetailsToggle.classList.remove('menu-opening');
     this.mainDetailsToggle.querySelectorAll('details').forEach(details =>  {
       details.removeAttribute('open');
@@ -535,9 +533,9 @@ class SliderComponent extends HTMLElement {
 
   initPages() {
     this.sliderItemsToShow = Array.from(this.sliderItems).filter(element => element.clientWidth > 0);
-    if (this.sliderItemsToShow.length < 2) return;
-    this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
-    this.slidesPerPage = Math.floor((this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset);
+    this.sliderLastItem = this.sliderItemsToShow[this.sliderItemsToShow.length - 1];
+    if (this.sliderItemsToShow.length === 0) return;
+    this.slidesPerPage = Math.floor(this.slider.clientWidth / this.sliderItemsToShow[0].clientWidth);
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
   }
@@ -549,7 +547,7 @@ class SliderComponent extends HTMLElement {
 
   update() {
     const previousPage = this.currentPage;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderLastItem.clientWidth) + 1;
 
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;
@@ -565,13 +563,13 @@ class SliderComponent extends HTMLElement {
 
     if (this.enableSliderLooping) return;
 
-    if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollLeft === 0) {
+    if (this.isSlideVisible(this.sliderItemsToShow[0])) {
       this.prevButton.setAttribute('disabled', 'disabled');
     } else {
       this.prevButton.removeAttribute('disabled');
     }
 
-    if (this.isSlideVisible(this.sliderItemsToShow[this.sliderItemsToShow.length - 1])) {
+    if (this.isSlideVisible(this.sliderLastItem)) {
       this.nextButton.setAttribute('disabled', 'disabled');
     } else {
       this.nextButton.removeAttribute('disabled');
@@ -586,7 +584,7 @@ class SliderComponent extends HTMLElement {
   onButtonClick(event) {
     event.preventDefault();
     const step = event.currentTarget.dataset.step || 1;
-    this.slideScrollPosition = event.currentTarget.name === 'next' ? this.slider.scrollLeft + (step * this.sliderItemOffset) : this.slider.scrollLeft - (step * this.sliderItemOffset);
+    this.slideScrollPosition = event.currentTarget.name === 'next' ? this.slider.scrollLeft + (step * this.sliderLastItem.clientWidth) : this.slider.scrollLeft - (step * this.sliderLastItem.clientWidth);
     this.slider.scrollTo({
       left: this.slideScrollPosition
     });

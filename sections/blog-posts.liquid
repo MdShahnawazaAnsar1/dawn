@@ -1,0 +1,26 @@
+{% unless blog.articles_count == 0 %}
+
+{% endunless %}
+{% schema %}
+{
+"name":"New Blog Posts",
+"settings":[
+{
+
+"type": "range",
+"id": "posts-range",
+"min": 1,
+"max": 10,
+"step": 1,
+"label": "Posts Available",
+"default": 4
+},
+],
+"presets":[
+{
+"name":"New Blog Posts",
+"category":"Posts"
+}
+]
+}
+{% endschema %}

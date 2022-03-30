@@ -1,6 +1,79 @@
-<h1>Hello </h1>
-{% schema%}
+{% if section.settings.liquid-checkbox%}
+<h1>{{section.settings.liquid-ref}}</h1>
+{%endif%}
+{{section.settings.liquid-number}}
+{{section.settings.liquid-radio}}
+{{section.settings.liquid-range}}
+{% schema %}
+
 {
-    
+"name": "Liquid Refrence",
+"settings":[
+{
+"id":"liquid-ref",
+"type": "text",
+"label":"A Reference for Shopify Liquid"
+},{
+"id":"liquid-checkbox",
+"type":"checkbox",
+"label":"A checkbox in liquid"
+},{
+"id":"liquid-number",
+"type":"number",
+"label":"A number in liquid"
+},
+{
+"id":"liquid-radio",
+"type":"radio",
+"label":"Radio Button",
+"options":[
+{
+"value":"Shan",
+"label":"Option 1"
+},{
+"value":"Shahnawaz",
+"label":"Option 2"
 }
-{% endschema%}
+]
+},
+{
+
+"type": "range",
+"id": "liquid-range",
+"min": 10,
+"max": 100,
+"step": 10,
+"unit": " ₹",
+"label": "Font size",
+"default": 10
+},
+{
+"type": "select",
+"id": "liquid-select",
+"label": "Select",
+"options": [
+{
+"value": "top",
+"label": "Top"
+},
+{
+"value": "middle",
+"label": "Middle"
+},
+{
+"value": "bottom",
+"label": "Bottom"
+}
+],
+"default": "middle"
+}
+
+],
+"presets":[
+{
+"name":"Liquid Refrence",
+"category":"Refrence"
+}
+]
+}
+{% endschema %}
